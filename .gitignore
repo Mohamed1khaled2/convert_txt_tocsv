@@ -1,0 +1,5 @@
+dist
+build
+__pycache__
+installer.iss
+ConvertApp.spec
