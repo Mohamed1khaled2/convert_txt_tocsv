@@ -82,8 +82,10 @@ class Converter:
                 client["Phone 1 - Value"] = number
                 clients.append(client)
 
+        filepath_without_extention = file_path.split('.')[0]
+      
         # Write client data to a new CSV file
-        with open(f"{file_path}.csv", "w", newline="") as csvfile:
+        with open(f"{filepath_without_extention}.csv", "w", newline="") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=field_names)
             writer.writeheader()
             writer.writerows(clients)
