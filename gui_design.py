@@ -31,10 +31,9 @@ class App(customtkinter.CTk):
         if self.name_file.find('.txt') != -1:
             self.name_file_label.configure(text=self.name_file, text_color='black')
             self.label_ready.grid(row=2, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
-
         else:
              self.name_file_label.configure(
-                text='Your Choose Wrong File,\n please check extension of file is txt', 
+                text='Your Choose Wrong File,\n please check extension of file is txt \nOr not chossing any file', 
                 text_color= 'red',
                 font=('arial', 24)
                 )
