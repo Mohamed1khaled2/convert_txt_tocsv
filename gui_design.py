@@ -57,12 +57,14 @@ class App(customtkinter.CTk):
 
     def convert_fun(self):
 
-        self.path = self.file_path.split("/")[:-1]
+        self.path = self.file_path.split("/")[:-1]  # path of file
 
+        # list of all file in path
         self.all_files = os.listdir("\\".join(self.path))
 
-        if self.name_file in self.all_files:
+        self.csv_path = os.path.splitext(self.file_path)[0] + ".csv"
 
+        if self.csv_path.split('/')[-1] in self.all_files:
             CTkMessagebox(
                 title="Error", message="This File Converted Before", icon="cancel"
             )
