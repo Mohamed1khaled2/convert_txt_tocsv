@@ -1,6 +1,7 @@
 import customtkinter
 import os
 from CTkMessagebox import CTkMessagebox
+import winsound
 
 
 class App(customtkinter.CTk):
@@ -65,6 +66,7 @@ class App(customtkinter.CTk):
         self.csv_path = os.path.splitext(self.file_path)[0] + ".csv"
 
         if self.csv_path.split('/')[-1] in self.all_files:
+            winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
             CTkMessagebox(
                 title="Error", message="This File Converted Before", icon="cancel"
             )
