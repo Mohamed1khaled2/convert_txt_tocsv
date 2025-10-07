@@ -18,6 +18,8 @@ def icon_path():
     else:
         icon_path = "logo.ico"
     return icon_path
+
+
 app = App(icon_path=icon_path(), converter=Converter())
 app.mainloop()
 

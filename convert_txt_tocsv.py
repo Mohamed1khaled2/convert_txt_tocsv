@@ -2,12 +2,13 @@ import sys
 import os
 import csv
 
+
 class Converter:
-    
-    
+
     def __init__(self):
         pass
     # Function to check if the file path is a valid .txt file and exists
+
     def check_txt_extension(self, file_path: list[str]) -> bool:
         print(f"📂 Files path: {file_path}")
 
@@ -25,7 +26,8 @@ class Converter:
 
 
 # Function to create a CSV file from numbers in "1.txt"
-    def create_csv_file(self, name_new_file: str, file_path:str):
+
+    def create_csv_file(self, file_path: str):
         # List of all field names for the CSV
         field_names = [
             "Name Prefix",
@@ -74,7 +76,7 @@ class Converter:
         # Read numbers from "1.txt" and prepare client data
         with open(file_path, "r") as txt:
             clients = []
-            names = ["Cn25"]
+            names = ["Cn25", "Fn25", "Lk25", "Ar25", "Rb25"]
             for number in txt.readlines():
                 number = number.removesuffix("\n")
                 client = dict_field_name.copy()
@@ -83,11 +85,13 @@ class Converter:
                 clients.append(client)
 
         # Write client data to a new CSV file
-        with open(f"{file_path}.csv", "w", newline="") as csvfile:
+        csv_path = os.path.splitext(file_path)[0] + ".csv"
+        with open(csv_path, "w", newline="") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=field_names)
             writer.writeheader()
             writer.writerows(clients)
-        return True
+        return csv_path
+
 
 # Main function to run the script from command line
 def main():
@@ -102,7 +106,8 @@ def main():
     file_path = sys.argv[1]
     # Check if file is valid before creating CSV
     if converter.check_txt_extension(file_path) == True:
-        converter.create_csv_file(file_path.split("\\")[-1].split(".")[0], file_path)
+        converter.create_csv_file(file_path.split(
+            "\\")[-1].split(".")[0], file_path)
     input("\n✅ Done. Press Enter to exit...")
 
 
